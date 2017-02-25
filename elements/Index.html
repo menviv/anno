@@ -1,0 +1,438 @@
+
+    <title>Bot Builder Management</title>
+    
+  <meta charset="UTF-8">  
+   
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" href="/logos/favicon.png" type="image/x-icon">
+
+    <script type="text/javascript" src="../platform/platform.js"></script>
+    <script src="../jquery/dist/jquery.min.js"></script>
+    <script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
+    
+    
+
+    
+       
+    <script src="../underscore/underscore.js"></script>
+    <script src="../moment/moment.js"></script>
+    <script src="../ckeditor/ckeditor.js"></script>
+
+    
+    
+    <script src="../dropzone/dist/min/dropzone.min.js"></script>
+       
+    <link href="https://fonts.googleapis.com/css?family=Assistant" rel="stylesheet">
+
+    <link rel="stylesheet" href="../dropzone/dist/min/dropzone.min.css">
+
+    <!-- Core build with no theme, formatting, non-essential modules -->
+    <!--<link href="../quill/dist/quill.core.css" rel="stylesheet">-->
+    <link href="../quill/dist/quill.snow.css" rel="stylesheet">
+    <script src="../quill/dist/quill.js" type="text/javascript"></script>
+        
+    
+    <script src="../javascripts/global.js"></script>  
+
+
+    
+	<link rel="import" href="../iron-form/iron-form.html">
+
+
+	<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+	<link rel="import" href="../iron-ajax/iron-ajax.html">    
+	<link rel="import" href="../paper-styles/demo-pages.html">
+	<link rel="import" href="../paper-button/paper-button.html">
+  <link rel="import" href="../paper-icon-button/paper-icon-button.html">
+	<link rel="import" href="../paper-checkbox/paper-checkbox.html">
+	<link rel="import" href="../paper-drawer-panel/paper-drawer-panel.html">
+    
+	<link rel="import" href="../paper-input/paper-input-container.html">
+	<link rel="import" href="../paper-input/paper-input-error.html">
+	<link rel="import" href="../paper-input/paper-input.html">
+    
+	<link rel="import" href="../iron-icons/iron-icons.html">
+	<link rel="import" href="../iron-icons/hardware-icons.html">
+	<link rel="import" href="../iron-icons/social-icons.html">
+	<link rel="import" href="../iron-icons/maps-icons.html">
+	<link rel="import" href="../iron-icons/image-icons.html">	
+	<link rel="import" href="../iron-icons/editor-icons.html">
+	<link rel="import" href="../iron-input/iron-input.html">
+	<link rel="import" href="../iron-image/iron-image.html">
+	<link rel="import" href="../paper-toast/paper-toast.html">
+	<link rel="import" href="../iron-overlay-behavior/iron-overlay-behavior.html">
+    
+    
+    <link rel="import" href="../neon-animation/neon-animated-pages.html">
+    <link rel="import" href="../neon-animation/neon-animatable.html">
+    <link rel="import" href="../neon-animation/neon-animations.html">
+    <link rel="import" href="../neon-animation/neon-shared-element-animatable-behavior.html">   
+    
+    <link rel="import" href="../neon-animation/neon-animation-runner-behavior.html">
+	<link rel="import" href="../neon-animation/animations/scale-up-animation.html">
+	<link rel="import" href="../neon-animation/animations/fade-out-animation.html"> 
+    
+    <link rel="import" href="../iron-media-query/iron-media-query.html">
+        
+    
+  	<link rel="import" href="../paper-menu/paper-menu.html">
+    <link rel="import" href="../paper-progress/paper-progress.html">
+  	<link rel="import" href="../paper-toggle-button/paper-toggle-button.html">
+  	<link rel="import" href="../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../paper-spinner/paper-spinner-lite.html">
+    <link rel="import" href="../paper-spinner/paper-spinner.html">
+  	
+  	
+  	<link rel="import" href="../neon-animation/demo/shared-styles.html">
+  	<link rel="import" href="../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../paper-styles/typography.html">
+    <link rel="import" href="../paper-styles/color.html">
+
+     <link rel="import" href="../paper-toolbar/paper-toolbar.html">  	   
+  
+
+
+    <link rel="import" href="../../paper-styles/demo-pages.html">
+
+    <link rel="import" href="../createOutMessage.html">  
+    <link rel="import" href="../CreateInMessage.html">  
+    <link rel="import" href="../Admin.html">  
+
+
+
+
+    <style is="custom-style">
+
+
+
+
+
+    body{
+      font-family: 'Assistant', sans-serif;
+      background-color: #fff;
+    }
+
+
+
+
+body.loading {
+    overflow: hidden;   
+}
+
+body.loading .modal {
+    display: block;
+}    
+    
+
+    
+	neon-animated-pages {
+    	position: absolute;
+    	top: 70px;
+    	left: 0;
+    	bottom: 0;
+    	right: 0;
+    	overflow-y: scroll;
+	} 
+
+	neon-animated-pages > * {
+    	float: right;
+	}
+    
+
+      paper-button {
+        color: white;
+        margin: 10px;
+        background-color: var(--google-blue-700);
+        white-space: nowrap;
+      }
+      button {
+        display: block;
+        line-height: 40px;
+        background-color: transparent;
+        border: none;
+        font-size: 14px;
+        margin: 20px;
+      }
+      
+
+
+
+
+  
+
+
+
+	
+	
+	.RequestActivityPanelContainer {
+	
+		max-height:40%;
+		width: 50%;
+		float: right;
+		padding-right: 5%;
+		color: initial;
+		line-height: initial;
+    	letter-spacing: initial; 	
+	
+	}     
+            
+	.PanelListClass {
+
+		max-height:90%;
+		width: 90%;
+		float: right;
+		padding-top: 1%;
+		margin-top: 35px;
+		color: initial;
+		line-height: initial;
+    	letter-spacing: initial; 
+	}
+
+
+  	.PanelListClass_ActivityList {
+
+		max-height:90%;
+		width: 100%;
+		float: right;
+		padding-top: 1%;
+    padding-right:1%;
+		margin-top: 35px;
+		color: initial;
+		line-height: initial;
+    	letter-spacing: initial; 
+	}
+	
+	.PanelCreateEntity {
+
+    height: 100%;
+    width: 100%;
+    float: right;
+    padding: 1%;
+    color: initial;
+    line-height: initial;
+    letter-spacing: initial;
+
+	}	
+	
+
+  
+  
+  .CompanyLogo[wide-layout] {
+    width: 40%;
+    height: 50px;
+    float: right;
+    background-image: url("/logos/logo.png");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: right;
+  } 
+  
+  .CompanyLogo {
+    width: 20%;
+    height: 50px;
+    float: right;
+    background-image: url("/logos/logo.png");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: right;
+}
+   		
+	
+      paper-toggle-button {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+
+            paper-toggle-button.green {
+              --paper-toggle-button-checked-bar-color:  var(--paper-green-500);
+              --paper-toggle-button-checked-button-color:  var(--paper-green-500);
+              --paper-toggle-button-checked-ink-color: var(--paper-green-500);
+              --paper-toggle-button-unchecked-bar-color:  var(--paper-teal-500);
+              --paper-toggle-button-unchecked-button-color:  var(--paper-teal-500);
+              --paper-toggle-button-unchecked-ink-color: var(--paper-teal-500);
+            }
+
+
+          paper-fab.orange {
+            --paper-fab-background: var(--paper-orange-500);
+            --paper-fab-keyboard-focus-background: var(--paper-orange-900);
+          }
+
+
+.BackBtn {
+    position: fixed;
+    top: 70px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 0, 0, 0);
+    z-index: 3000;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+
+
+#paperDrawerPanel [main]:not([style-scope]):not(.style-scope) {
+    background-color: fff;
+}
+
+
+
+.LogoCont {
+    margin: 0;
+    line-height: 5vw;
+    float: right;
+    width: 100%;
+    margin-top: 0vw;
+    text-align: center;
+}
+
+.LogoCont[wide-layout] {
+    margin: 0;
+    line-height: 5vw;
+    float: right;
+    width: 100%;
+    margin-top: 5vw;
+    text-align: center;
+}
+
+
+iron-icon.LogoIcon {
+
+    width: 15vw;
+    height: 15vw;
+}
+
+iron-icon.LogoIcon[wide-layout] {
+
+    width: 15vw;
+    height: 15vw;
+}
+
+     paper-toolbar {
+        color: #444;
+        background-color: rgba(0, 0, 0, 0.14);
+        white-space: nowrap;
+        padding: 0 0px;
+        direction: ltr;
+      }
+
+
+      	      
+    </style>
+    
+     
+    	
+    	
+  </head>
+  
+
+  <body >
+
+
+    <iron-media-query query="(min-width: 600px)" query-matches="{{wide}}"></iron-media-query>
+
+    <paper-toolbar class="violet">
+
+      
+      <paper-icon-button  src="/logos/logo.png" ></paper-icon-button>
+
+      <span class="title">Bot Administrastion</span>
+      
+      <!--
+        <paper-icon-button class="white" src="/icons/textlist.png" id="GoToMessageList"></paper-icon-button>
+        <paper-icon-button class="white"  src="/icons/sms.png" id="CreateSMS"></paper-icon-button>
+      -->
+    </paper-toolbar>
+
+  
+   <template is="dom-bind">
+  
+
+  
+
+      <neon-animated-pages id="pages" selected="[[selected]]" entry-animation="[[entryAnimation]]" exit-animation="[[exitAnimation]]">      
+
+        <neon-animatable entry-animation="slide-from-right-animation" exit-animation="slide-left-animation">
+        
+				      <x-Admin class="PanelCreateEntity"></x-Admin> 
+					      
+        </neon-animatable>      
+
+        
+ 
+      </neon-animated-pages>
+
+    </template>
+      
+      
+    <script>
+
+
+     $('#GoToMessageList').on('touchstart click', function(){ 
+
+       scope.selected = 2;
+
+      document.querySelector('x-MessagesOut').PopulateOutMessages();                  
+
+     }); 
+
+     $('#CreateSMS').on('touchstart click', function(){ 
+
+       scope.selected = 0;
+
+     }); 
+
+
+
+        
+
+
+      var scope = document.querySelector('template[is="dom-bind"]');
+      scope.selected = 0;
+      scope._onPrevClick = function() {
+        this.entryAnimation = 'slide-from-left-animation';
+        this.exitAnimation = 'slide-right-animation';
+        this.selected = this.selected === 0 ? 5 : (this.selected - 1);
+      }
+      scope._onNextClick = function() {
+        this.entryAnimation = 'slide-from-right-animation';
+        this.exitAnimation = 'slide-left-animation';
+        this.selected = this.selected === 5 ? 0 : (this.selected + 1);
+      }
+      scope._onUpClick = function() {
+        this.entryAnimation = 'slide-from-top-animation';
+        this.exitAnimation = 'slide-down-animation';
+        this.selected = this.selected === 5 ? 0 : (this.selected + 1);
+      }
+      scope._onDownClick = function() {
+        this.entryAnimation = 'slide-from-bottom-animation';
+        this.exitAnimation = 'slide-up-animation';
+        this.selected = this.selected === 0 ? 5 : (this.selected - 1);
+      }
+
+      
+           
+      
+      
+    </script>      
+      
+
+
+    
+  
+    
+    
+
+
+  </body>
+</html>
