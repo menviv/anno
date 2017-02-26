@@ -46,6 +46,7 @@
     "stack-trace": "0.0.9",
     "stream-browserify": "^2.0.1",
     "utf8": "^2.1.2",
+    "util": "^0.10.3",
     "utils": "^0.3.1"
   }
 }
